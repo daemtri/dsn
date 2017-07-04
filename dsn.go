@@ -56,6 +56,9 @@ type Values struct {
 // 注意：当param的value不能解析为int的时候，将会直接返回默认值并且不会报错
 func (v *Values) Int(param string, def int) int {
 	value := v.Get(param)
+	if value == "" {
+		return def
+	}
 	if i, err := strconv.Atoi(value); err == nil {
 		return i
 	}
