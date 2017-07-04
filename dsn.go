@@ -14,9 +14,9 @@ type Config struct {
 
 // Parse 解析dsn字符串并返回DSN实例
 // eg. nsq://user:pass@localhost:4161/test
-func Parse(dsn string) (*Config, error) {
+func Parse(dataSourceName string) (*Config, error) {
 
-	parsed, err := url.Parse(dsn)
+	parsed, err := url.Parse(dataSourceName)
 	if err != nil {
 		return nil, err
 	}
