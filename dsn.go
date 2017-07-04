@@ -92,7 +92,7 @@ func (v *Values) Duration(param string, def time.Duration) time.Duration {
 	if value == "" {
 		return def
 	}
-	if du, err := time.ParseDuration(value); err != nil {
+	if du, err := time.ParseDuration(value); err == nil {
 		return du
 	}
 
