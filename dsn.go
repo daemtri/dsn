@@ -59,10 +59,11 @@ func (v *Values) Int(param string, def int) int {
 	if value == "" {
 		return def
 	}
-	if i, err := strconv.Atoi(value); err == nil {
-		return i
+	i, err := strconv.Atoi(value)
+	if err != nil {
+		return def
 	}
-	return def
+	return i
 }
 
 // String 返回querystring参数param的字符串的值
@@ -95,9 +96,10 @@ func (v *Values) Duration(param string, def time.Duration) time.Duration {
 	if value == "" {
 		return def
 	}
-	if du, err := time.ParseDuration(value); err == nil {
-		return du
+	du, err := time.ParseDuration(value)
+	if err != nil {
+		return def
 	}
 
-	return def
+	return du
 }
